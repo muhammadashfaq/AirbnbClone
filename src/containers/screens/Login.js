@@ -5,21 +5,30 @@ import { PropTypes } from 'prop-types';
 import colors from '../../styles/colors'
 import InputField from '../../components/form/InputField'
 import NextArrowButton from '../../components/buttons/NextArrowButton'
+import Notification from '../../components/Notification'
 
 class Login extends Component {
 
 
+    state = {
+        formValid: false
+    }
 
     handleNextButton = () => {
         alert('Next button pressed')
     }
 
+    handleCloseNotification = () => {
+        this.setState({ formValid: true })
+    }
+
     render() {
+        const {  formValid } = this.state
+        const showNotification = formValid ? false : true
+        const backgroundColor = formValid ? colors.green01 : colors.darkOrange
         return (
             <KeyboardAvoidingView
-                style={styles.wrapper}
-                behavior='padding'
-                enabled>
+                style={[styles.wrapper,{ backgroundColor }]}>
                 <View style={styles.scrollViewWrapper}>
                     <ScrollView style={styles.scrollView}>
                         <Text style={styles.loginHeader}>Log In</Text>
@@ -41,12 +50,20 @@ class Login extends Component {
                             customStyle={{ marginBottom: 30 }} />
 
                     </ScrollView>
-                    
+                    <View style={styles.nextButton}>
+                        <NextArrowButton
+                            handleNextButton={this.handleNextButton}
+                        />
+                    </View>
+
                 </View>
-                <View style={styles.nextButton}>
-                    <NextArrowButton
-                        handleNextButton={this.handleNextButton}
-                    />
+                <View>
+                    <Notification
+                        showNotification={showNotification}
+                        handleCloseNotification={this.handleCloseNotification}
+                        type='Error'
+                        firstLine="Those credentionls don't look right. "
+                        secondLine="Please try again" />
                 </View>
             </KeyboardAvoidingView>
         );
@@ -57,8 +74,7 @@ class Login extends Component {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        display: 'flex',
-        backgroundColor: colors.green01,
+        display: 'flex'
     },
     scrollViewWrapper: {
         marginTop: 70,
@@ -74,7 +90,8 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         paddingRight: 30,
         paddingTop: 20,
-        flex: 1
+        flex: 1,
+        height: '100%'
     },
     nextButton: {
         position: 'absolute',
