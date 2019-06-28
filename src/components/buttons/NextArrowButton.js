@@ -8,14 +8,14 @@ import colors from '../../styles/colors'
 class NextArrowButton extends Component {
 
 
-
   render() {
       const { disabled , handleNextButton} = this.props;
-      const opacityStyle = disabled ? { backgroundColor: 'rgba(255,255,255,0.2)' } : { backgroundColor: 'rgba(255,255,255,0.6)'}
+      const opacityStyle = disabled  ? 0.2 : 0.6 ;
     return (
       <TouchableHighlight
-      style={[styles.button,opacityStyle]}
-      onPress={handleNextButton}>
+      style={[styles.button,{opacity: opacityStyle}]}
+      onPress={handleNextButton}
+      disabled={disabled}>
         <FontAwesome 
             name={'angle-right'}
             size={32}
@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 50,
         width: 60,
-        height: 60
+        height: 60,
+        backgroundColor: colors.white
     },
     icon: {
         marginRight: -2,
