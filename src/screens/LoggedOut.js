@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image ,TouchableHighlight} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import colors from '../../styles/colors'
-import RoundedButton from '../../components/buttons/RoundedButton'
-
+import colors from '../styles/colors';
+import InputField from '../components/form/InputField';
+import RoundedButton from '../components/buttons/RoundedButton';
 export default class LoggedOut extends Component {
     
     onFacebookPress = () => {
@@ -22,7 +22,7 @@ export default class LoggedOut extends Component {
         return (
             <View style={styles.wrapper}>
                 <View style={styles.welcomeWrapper}>
-                    <Image source={require('../../assets/images/airbnb_logo.png')}
+                    <Image source={require('../assets/images/airbnb_logo.png')}
                         style={styles.logo}
                     />
                     <Text style={styles.welcomeText}>Welcome to Airbnb.</Text>

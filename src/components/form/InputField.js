@@ -74,7 +74,6 @@ class InputField extends Component {
                     secureTextEntry={secureInput}
                     onChangeText={onChangeText}
                     keyboardType={keyboaredType}
-                    autoFocus={autoFocus}
                 />
             </View>
         );
@@ -90,7 +89,7 @@ InputField.propTypes = {
     inputType: PropTypes.string.isRequired,
     customStyle: PropTypes.object,
     onChangeText: PropTypes.func,
-    showCheckmark: PropTypes.bool.isRequired
+    showCheckmark: PropTypes.bool
 }
 
 const styles = StyleSheet.create({
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontWeight: '700',
-        marginBottom: 20,
+        marginBottom: 10,
     },
     inputField: {
         borderBottomWidth: 1,

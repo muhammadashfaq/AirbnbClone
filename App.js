@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import LoggedOut from './src/containers/screens/LoggedOut'
-import Login from './src/containers/screens/Login'
+import {AppNavigator} from './src/navigation/AppNavigator'
 
 
 export default class App extends Component {
   render() {
     return (
-      <Login />
+      <AppNavigator />
     );
   }
 }
